@@ -1,0 +1,4 @@
+flows:
+  -
+    name: "FLOW DROOLS"
+    flow: "Filter.execute(filter[sourceSystemID == drools], name[FILTER_FLOW_DROOLS]) -> DroolsRulesApplier.execute(ruleName[dynatrace]) -> KafkaOut.execute(cib.cdo.getafe.pagerduty[string])"

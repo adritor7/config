@@ -1,0 +1,8 @@
+flows:
+  -
+    name: "FLOW DROOLS"
+    flow: "Filter.execute(filter[sourceSystemID == drools], name[FILTER_FLOW_DROOLS]) -> DroolsRulesApplier.execute(ruleName[dynatrace]) -> KafkaOut.execute(cib.cdo.getafe.pagerduty[string])"
+
+  -
+    name: "USERS BY DAY"
+    flow: "Filter.execute(filter[sourceSystemID == Medusa && componentName.resourceName containList == user && impactLevel != APPLICATION], name[FILTER_USERS_BY_DAY]) -> Window.execute(type[CustomTimeWindows], groupByKey[sourceSystemID|componentName.resourceName], interval[DAY], result[count])"
